@@ -31,8 +31,8 @@
     h = 5
     eleven = 11
     xmax = 1.2 * r
-    rmax = sqrt(xmax**2+xmax**2)
-    zmax = h/R*sqrt(xmax**2+xmax**2)
+    rmax = sqrt(xmax**2+xmax**2)-sqrt(eleven)
+    zmax = h/R*sqrt(xmax**2+xmax**2) - sqrt(eleven)
     koef = rmax/zmax
     rh = h * koef
     do i = 0, m
