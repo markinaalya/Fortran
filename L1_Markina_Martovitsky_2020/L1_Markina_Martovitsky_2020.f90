@@ -20,7 +20,7 @@
 
     ! Body of L1_Markina_Martovitsky_2020
     
- integer :: m = 1000 ! count of iteration
+ integer :: m = 10000 ! count of iteration
 
     real :: rn,a,b,s,r,h,rh
     real:: xmax, rmax, zmax, koef
@@ -30,20 +30,25 @@
     r = 2
     h = 5
     eleven = 11
+    
     xmax = 1.2 * r
     rmax = sqrt(xmax**2+xmax**2)
     zmax = h/R*sqrt(xmax**2+xmax**2)
+    
     koef = rmax/zmax
     rh = h * koef
+    S = 0
+    
     do i = 0, m
         call RANDOM_NUMBER(xr)
         call RANDOM_NUMBER(yr)
         call RANDOM_NUMBER(zr)
+        
         xr = -rh + (rh -(-rh)) * xr
         yr = -rh + (rh -(-rh)) * yr
         zr = h * zr
         
-        if (((zr**2) <= ((h**2)/(R**2)*((xr**2)+(yr**2))-11)) .AND. ((h/R*sqrt((xr**2)+(yr**2))-sqrt(eleven)) >= 0) .AND. ((h/R*sqrt((xr**2)+(yr**2)-sqrt(eleven)) <= h))) then
+        if (((zr**2) <= ((h**2)/(R**2)*((xr**2)+(yr**2)))) .AND. ((h/R*sqrt((xr**2)+(yr**2))) >= 0) .AND. ((h/R*sqrt((xr**2)+(yr**2)) <= h))) then
             S = S +zr
         end if
         
